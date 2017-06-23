@@ -58,7 +58,10 @@ task webpack(type: NodeTask, dependsOn: 'npmInstall') {
 	}
 }
 
-processResources.dependsOn 'webpack'
+processResources {
+	dependsOn webpack
+}
 
-clean.delete << file('node_modules')
-clean.delete << file('src/main/webapp/dist')
+clean {
+	delete 'node_modules', 'src/main/webapp/dist'
+}
